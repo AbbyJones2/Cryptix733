@@ -24,7 +24,7 @@ bot.on("message", async message => {
 
 
 
-})
+});
   let commandfile = bot.commands.get(cmd.slice(prefix.length));
   if (commandfile) commandfile.run(bot, message, args);
 
@@ -44,7 +44,7 @@ bot.on("message", async message => {
       .addField("Coder ", "Itachi#0460")
     message.delete().catch();
     message.channel.send(helpembed)
-  });
+  }
    if (cmd === `${prefix}report`) {
     let rUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if (!rUser) return message.channel.send("Couldn't find user.");
