@@ -138,5 +138,5 @@ let botembed = new Discord.RichEmbed()
 .addField("Created On", bot.user.createdAt);
 return message.channel.send(botembed);
   }
-});
+);
 client.login(process.env.BOT_TOKEN);
