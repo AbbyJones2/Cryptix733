@@ -109,4 +109,4 @@ if (cmd === `${prefix}report`) {
  return message.channel.send(botembed);
   }
   };
-bot.login(process.env.BOT_TOKEN);
+client.login(process.env.BOT_TOKEN);
