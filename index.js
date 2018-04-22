@@ -27,9 +27,8 @@ bot.on("message", async message => {
 });
   let commandfile = bot.commands.get(cmd.slice(prefix.length));
   if (commandfile) commandfile.run(bot, message, args);
-}
-  if (cmd === `${prefix}welcome`) {
-    return message.channel.send(`To make the welcome message work make sure the name is welcome-leave in order for it to work!`);
+
+ 
 
   }
   if (cmd == `${prefix}info`) {
