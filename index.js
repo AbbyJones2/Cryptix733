@@ -1,36 +1,7 @@
 const botconfig = require("./botconfig.json");
 const Discord = require("discord.js");
 const bot = new Discord.Client({ disableEveryone: true });
-const fs = require("fs");
-bot.commands = new Discord.Collection();
-
-fs.readdir("./commands/", (err, files) => {
-
-  if (err) console.log(err);
-
-  let jsfile = files.filter(f => f.split(".").pop() === "js")
-  if (jsfile.length <= 0) {
-    console.log("Couldn't find commands.");
-    return;
-  }
-
-  jsfile.forEach((f, i) => {
-    let props = require(`./commands/${f}`);
-    console.log(`${f}loaded!`);
-    bot.commands.set(props.help.name, props)
-  });
-  bot.on('guildMemberAdd', member => {
-    const channel = member.guild.channels.find('name', 'welcome-leave');
-    if (!channel) return;
-    channel.send(`Welcome to the discord server ${member} :wink: !`);
-
-    bot.on('guildMemberRemove', member => {
-      const channel = member.guild.channels.find('name', 'welcome-leave');
-      if (!channel) return;
-      channel.send(`${member} has left the discord server :cry:`);
-    });
-
-  });
+bot.commands = new Discord.Collection()
 
   bot.on("ready", async () => {
     console.log(`${bot.user.username} is online!`);
@@ -39,7 +10,7 @@ fs.readdir("./commands/", (err, files) => {
 
   });
 
-});
+
 
 bot.on("message", async message => {
   if (message.author.bot) return;
