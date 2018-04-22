@@ -1,7 +1,6 @@
 const botconfig = require("./botconfig.json");
 const Discord = require("discord.js");
 const bot = new Discord.Client({disableEveryone: true});
-
 bot.commands = new Discord.Collection();
 
 bot.on('guildMemberAdd', member => {
@@ -24,7 +23,6 @@ bot.user.setActivity("Use ?help",{type: "PLAYING"});
 });
 
 });
-
 bot.on("message", async message => {
  if(message.author.bot) return;
 if(message.channel.type === "dm") return;
@@ -33,8 +31,6 @@ if(message.channel.type === "dm") return;
 let messageArray = message.content.split(" ");
  let cmd = messageArray[0];
 let args = messageArray.slice(1);
-
-
 
 
  let commandfile = bot.commands.get(cmd.slice(prefix.length));
