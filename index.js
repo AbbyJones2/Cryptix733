@@ -41,7 +41,7 @@ bot.on("message", async message => {
       .addField("Coder ", "Itachi#0460")
     message.delete().catch();
     message.channel.send(helpembed)
-  
+  }
   }
     });
 client.login(process.env.BOT_TOKEN);
