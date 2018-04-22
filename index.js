@@ -1,7 +1,7 @@
 const botconfig = require("./botconfig.json");
 const Discord = require("discord.js");
 const bot = new Discord.Client({ disableEveryone: true });
-bot.commands = new Discord.Collection()
+bot.commands = new Discord.Collection();
 
   bot.on("ready", async () => {
     console.log(`${bot.user.username} is online!`);
@@ -10,8 +10,8 @@ bot.commands = new Discord.Collection()
 
   });
 
-
 });
+
 bot.on("message", async message => {
   if (message.author.bot) return;
   if (message.channel.type === "dm") return;
@@ -45,8 +45,8 @@ bot.on("message", async message => {
     message.channel.send(helpembed)
   }
    if (cmd === `${prefix}report`) {
-    let rUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-    if (!rUser) return message.channel.send("Couldn't find user.");
+   let rUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+   if (!rUser) return message.channel.send("Couldn't find user.");
     let reason = args.join(" ").slice(22);
     let reportEmbed = new Discord.RichEmbed()
     .setDescription("Reports")
@@ -77,9 +77,9 @@ bot.on("message", async message => {
     if (cmd === `${prefix}hello`) {
     return message.channel.send("Hello Have a nice day!");
     }
-    if (cmd === `${prefix}cookie`) {
+   if (cmd === `${prefix}cookie`) {
     return message.channel.send("Here is a cookie! :cookie:");
-   }
+    }
     if(cmd === `${prefix}serverinfo`) {
     let sicon = message.guild.iconURL;
     let serverembed = new Discord.RichEmbed()
@@ -115,10 +115,10 @@ bot.on("message", async message => {
     message.channel.bulkDelete(args[0]).then(() => {
     message.channel.send(`Cleared ${args[0]} messages.`)
     .then(msg => msg.delete(5000));
-   });
+    });
 
     if (cmd === `${prefix}botinfo`) {
-    let bicon = bot.user.displayAvatarURL;
+  let bicon = bot.user.displayAvatarURL;
   let botembed = new Discord.RichEmbed()
   .setDescription("Bot Information")
    .setThumbnail(bicon)
@@ -126,6 +126,7 @@ bot.on("message", async message => {
   .addField("Bot Name", bot.user.username)
   .addField("Created On", bot.user.createdAt);
   return message.channel.send(botembed);
+
   }
   });
 client.login(process.env.BOT_TOKEN);
