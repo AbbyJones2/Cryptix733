@@ -30,7 +30,7 @@ bot.on("message", async message => {
 
  
 
-  }
+  
   if (cmd == `${prefix}info`) {
     let infoEmbed = new Discord.RichEmbed()
     let helpembed = new Discord.RichEmbed()
