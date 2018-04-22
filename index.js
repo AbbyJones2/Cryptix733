@@ -155,11 +155,6 @@ bot.on("message", async message => {
   .addField("Bot Name", bot.user.username)
   .addField("Created On", bot.user.createdAt);
   return message.channel.send(botembed);
-}
-);
-bot.login(botconfig.token);
-
-
   }
   };
 client.login(process.env.BOT_TOKEN);
