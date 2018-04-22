@@ -1,7 +1,9 @@
 const botconfig = require("./botconfig.json");
 const Discord = require("discord.js");
 const bot = new Discord.Client({disableEveryone: true});
+
 bot.commands = new Discord.Collection();
+
 bot.on('guildMemberAdd', member => {
     const channel = member.guild.channels.find('name', 'welcome-leave');
     if (!channel) return;
