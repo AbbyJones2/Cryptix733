@@ -62,87 +62,91 @@ bot.on("message", async message => {
     message.delete().catch();
     message.channel.send(helpembed)
   }
-   if (cmd === `${prefix}report`) {
-    let rUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-    if (!rUser) return message.channel.send("Couldn't find user.");
-    let reason = args.join(" ").slice(22);
-    let reportEmbed = new Discord.RichEmbed()
-    .setDescription("Reports")
-    .setColor("#f44277")
-    .addField("Report User", `${rUser} with ID: ${rUser.id}`)
-    .addField("Reported By", `${message.author} with ID: ${message.author.id}`)
-    .addField("Channel", message.channel)
-    .addField("Time", message.createdAt)
-    .addField("Reason", reason);
-    let reportschannel = message.guild.channels.find(`name`, "reports");
-    if (!reportschannel) return message.channel.send("Couldn't find reports channel.");
-    message.delete().catch(O_o => {});
-    reportschannel.send(reportEmbed);
-    }
+  // if (cmd === `${prefix}report`) {
+  //  let rUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+  //  if (!rUser) return message.channel.send("Couldn't find user.");
+  //  let reason = args.join(" ").slice(22);
+  //  let reportEmbed = new Discord.RichEmbed()
+  //  .setDescription("Reports")
+  //  .setColor("#f44277")
+  //  .addField("Report User", `${rUser} with ID: ${rUser.id}`)
+  //  .addField("Reported By", `${message.author} with ID: ${message.author.id}`)
+  //  .addField("Channel", message.channel)
+  //  .addField("Time", message.createdAt)
+  //  .addField("Reason", reason);
+  //  let reportschannel = message.guild.channels.find(`name`, "reports");
+  //  if (!reportschannel) return message.channel.send("Couldn't find reports channel.");
+  //  message.delete().catch(O_o => {});
+  //  reportschannel.send(reportEmbed);
+  //  }
 
 
-    if (cmd === `${prefix}kick`) {
-    let kUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-    if (!kUser) return message.channel.send("Can't find user!");
-    let kReason = args.join(" ").slice(22);
-    if (!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("No You Can't Do that!");
-    if (kUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send("That user can't be kicked!");
-    }
+  //  if (cmd === `${prefix}kick`) {
+  //  let kUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+  //  if (!kUser) return message.channel.send("Can't find user!");
+  //  let kReason = args.join(" ").slice(22);
+  //  if (!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("No You Can't Do that!");
+  //  if (kUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send("That user can't be kicked!");
+  //  }
 
 
 
 
-    if (cmd === `${prefix}hello`) {
-    return message.channel.send("Hello Have a nice day!");
-    }
-    if (cmd === `${prefix}cookie`) {
-    return message.channel.send("Here is a cookie! :cookie:");
-    }
-    if(cmd === `${prefix}serverinfo`) {
-    let sicon = message.guild.iconURL;
-    let serverembed = new Discord.RichEmbed()
-    .setDescription("Server Information")
-    .setColor("#f44277")
-    .setThumbnail(sicon)
-    .addField("Server Name!", message.guild.name)
-    .addField("Created on!", message.guild.createdAt)
-    .addField("You Joined!", message.member.joinedAt)
-    .addField("Total Members!", message.guild.memberCount);
-    return message.channel.send(serverembed);
+  //  if (cmd === `${prefix}hello`) {
+  //  return message.channel.send("Hello Have a nice day!");
+  //  }
+  //  if (cmd === `${prefix}cookie`) {
+  //  return message.channel.send("Here is a cookie! :cookie:");
+  //  }
+  //  if(cmd === `${prefix}serverinfo`) {
+  //  let sicon = message.guild.iconURL;
+  //  let serverembed = new Discord.RichEmbed()
+  //  .setDescription("Server Information")
+  //  .setColor("#f44277")
+  //  .setThumbnail(sicon)
+  //  .addField("Server Name!", message.guild.name)
+  //  .addField("Created on!", message.guild.createdAt)
+  //  .addField("You Joined!", message.member.joinedAt)
+  //  .addField("Total Members!", message.guild.memberCount);
+  //  return message.channel.send(serverembed);
 
 
-    if (cmd === `${prefix}help`) {
-    let helpembed = new Discord.RichEmbed()
-    .setTitle("Help Section")
-    .setDescription("All the commands available!")
-    .setColor("#f909d5")
-    .addField("?kick", "Kicks the selected user")
-    .addField("?Botinfo", "Shows the bot info.", true)
-    .addField("?serverinfo", "Shows the server info.")
-    .addField("?report", "Used to report a user.")
-    .addField("?cookie", "Gives you a cookie :).")
-    .addField("?report", "Reports the user.")
-    .addField("?hello", "Say hello!")
-    message.delete().catch();
-    message.channel.send(helpembed)
-    }
+  //  if (cmd === `${prefix}help`) {
+  //  let helpembed = new Discord.RichEmbed()
+  //  .setTitle("Help Section")
+  //  .setDescription("All the commands available!")
+  //  .setColor("#f909d5")
+  //  .addField("?kick", "Kicks the selected user")
+  //  .addField("?Botinfo", "Shows the bot info.", true)
+  //  .addField("?serverinfo", "Shows the server info.")
+  //  .addField("?report", "Used to report a user.")
+  //  .addField("?cookie", "Gives you a cookie :).")
+  //  .addField("?report", "Reports the user.")
+  //  .addField("?hello", "Say hello!")
+  //  message.delete().catch();
+  //  message.channel.send(helpembed)
+  //  }
 
-    if (cmd === `${prefix}clear`)
-    if (!message.member.hasPermission("MANAGE_MESSAGES")) return message.reply("")
-    if (!args[0]) return message.channel.send("Cleared!")
-    message.channel.bulkDelete(args[0]).then(() => {
-    message.channel.send(`Cleared ${args[0]} messages.`).then(msg => msg.delete(5000));
-    });
+  //  if (cmd === `${prefix}clear`)
+  //  if (!message.member.hasPermission("MANAGE_MESSAGES")) return message.reply("")
+  //  if (!args[0]) return message.channel.send("Cleared!")
+  //  message.channel.bulkDelete(args[0])
+  //  .then(() => {
+  //  message.channel.send(`Cleared ${args[0]} messages.`)
+  //  .then(msg => msg.delete(5000));
+  //  });
 
-    if (cmd === `${prefix}botinfo`) {
-    let bicon = bot.user.displayAvatarURL;
-  let botembed = new Discord.RichEmbed()
-  .setDescription("Bot Information")
-   .setThumbnail(bicon)
-  .setColor("#f44277")
-  .addField("Bot Name", bot.user.username)
-  .addField("Created On", bot.user.createdAt);
-  return message.channel.send(botembed);
+  //  if (cmd === `${prefix}botinfo`) {
+  //  let bicon = bot.user.displayAvatarURL;
+  //  //let botembed = new Discord.RichEmbed()
+  //  //.setDescription("Bot Information")
+  // // .setThumbnail(bicon)
+  //  //.setColor("#f44277")
+  //  //.addField("Bot Name", bot.user.username)
+  //  //.addField("Created On", bot.user.createdAt);
+  //  //return message.channel.send(botembed);
+
+
   }
     });
 client.login(process.env.BOT_TOKEN);
