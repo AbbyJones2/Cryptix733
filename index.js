@@ -105,7 +105,7 @@ bot.on("message", async message => {
     .addField("Created On", bot.user.createdAt);
    return message.channel.send(botembed);
 }
-);
+    });
 bot.login(botconfig.token);
 
 
