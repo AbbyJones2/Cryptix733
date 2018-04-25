@@ -108,5 +108,5 @@ if (cmd === `${prefix}report`) {
  return message.channel.send(botembed);
 
   }
-    });
+    };
 client.login(process.env.BOT_TOKEN);
