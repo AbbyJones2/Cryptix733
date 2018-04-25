@@ -114,6 +114,6 @@ bot.login(botconfig.token);
 
 
 
-  }
+  })
     };
 client.login(process.env.BOT_TOKEN);
