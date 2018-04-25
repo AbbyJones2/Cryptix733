@@ -8,6 +8,7 @@ bot.on("ready", async () => {
 bot.user.setActivity("Use ?help",{type: "PLAYING"});
 });
 
+});
 client.on('message', msg => {
   if (msg.content === 'ping') {
     msg.reply('Pong!');
